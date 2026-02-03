@@ -1,3 +1,6 @@
+from bronze.amazon_sales.remove_duplicate import drop_rows_with_duplicate
+
+
 def test_remove_duplicate_order_id_status_and_date(spark):
     df = spark.createDataFrame(
         [
@@ -13,8 +16,6 @@ def test_remove_duplicate_order_id_status_and_date(spark):
         ],
         ["Order ID", "Status", "Date"]
     )
-
-    from src.bronze.amazon_sales.remove_duplicate import drop_rows_with_duplicate
 
     result = drop_rows_with_duplicate(df)
     rows = result.collect()

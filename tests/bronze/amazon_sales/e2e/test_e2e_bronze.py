@@ -1,3 +1,4 @@
+from bronze.amazon_sales.job_bronze import run
 def test_bronze_pipeline_e2e(spark, tmp_path):
     input_path = tmp_path / "input"
     output_path = tmp_path / "output"
@@ -24,8 +25,6 @@ def test_bronze_pipeline_e2e(spark, tmp_path):
         ],
         ["Order ID", "Status", "Date", "ship-postal-code"]
     ).write.csv(str(input_path), header=True)
-
-    from src.bronze.amazon_sales.job import run
 
     # executa o SISTEMA (não função interna)
     run(spark, str(input_path), str(output_path))

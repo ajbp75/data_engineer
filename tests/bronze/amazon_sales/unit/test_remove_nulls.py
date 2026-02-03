@@ -1,4 +1,5 @@
 import pytest
+from bronze.amazon_sales.remove_nulls import drop_rows_with_nulls
 
 def test_fail_when_nulls_in_required_columns(spark):
     df = spark.createDataFrame(
@@ -10,8 +11,6 @@ def test_fail_when_nulls_in_required_columns(spark):
     ["Order ID", "Status"]
     )
 
-
-    from src.bronze.amazon_sales.remove_nulls import drop_rows_with_nulls
     result = drop_rows_with_nulls(df)
 
     rows = result.collect()

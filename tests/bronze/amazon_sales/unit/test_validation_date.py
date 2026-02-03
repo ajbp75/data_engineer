@@ -1,4 +1,6 @@
 import pytest
+from bronze.amazon_sales.validation_date import validade_date_format
+
 
 def test_fail_when_date_format_is_invalid(spark):
         
@@ -11,9 +13,7 @@ def test_fail_when_date_format_is_invalid(spark):
         ],
         ["Order ID", "Status", "Date"]
     )
-
-    from src.bronze.amazon_sales.validation_date import validade_date_format
-
+ 
     result = validade_date_format(df)
     rows = result.collect()
 

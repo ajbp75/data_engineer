@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-from src.bronze.amazon_sales.pipeline_bronze import pipeline_bronze
+from bronze.amazon_sales.pipeline_bronze import pipeline_bronze
 
 def run(spark: SparkSession, input_path: str, output_path: str):
     df_raw = (spark.read

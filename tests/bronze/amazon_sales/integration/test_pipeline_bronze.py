@@ -1,3 +1,4 @@
+from bronze.amazon_sales.pipeline_bronze import pipeline_bronze
 def test_pipeline_bronze(spark):
     df = spark.createDataFrame(
         [
@@ -15,8 +16,6 @@ def test_pipeline_bronze(spark):
 
         ], ["Order ID", "Status", "Date", "ship-postal-code"]
     )
-
-    from src.bronze.amazon_sales.pipeline_bronze import pipeline_bronze
 
     result = pipeline_bronze(df)
     rows = result.collect()
